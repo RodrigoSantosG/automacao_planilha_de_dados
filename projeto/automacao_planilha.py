@@ -12,3 +12,10 @@ gc = gspread.authorize(credentials)
 planilha = gc.open_by_key('ID da planilha')
 worksheet = planilha.worksheet('Nome da planilha')
 
+# navegando ate o instagram
+def instagram():
+    drive = webdriver.Chrome(executable_path='caminho para o drive')
+    drive.get('https://www.instagram.com/') # você pode por o nome do usuario depois do '/'
+    time.sleep(5) # tempo de espera para pagina carregar
+    return
+
