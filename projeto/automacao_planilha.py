@@ -17,5 +17,6 @@ def instagram():
     drive = webdriver.Chrome(executable_path='caminho para o drive')
     drive.get('https://www.instagram.com/') # você pode por o nome do usuario depois do '/'
     time.sleep(5) # tempo de espera para pagina carregar
-    return
+    return drive
+
 
