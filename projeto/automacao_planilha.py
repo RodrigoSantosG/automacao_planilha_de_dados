@@ -19,4 +19,19 @@ def instagram():
     time.sleep(5) # tempo de espera para pagina carregar
     return drive
 
+# extraido dados dos videos e fotos do instagram
+def extrair_dados(driver):
+    # navegar ate o primeiro post
+    try:
+        driver.find_element_by_xpath('//div[@class="v1Nh3 kIKUG  _bz0w"]').click()
+        time.sleep(5) # esperar carregar a pagina
+        curtidas = driver.find_element.by_xpanth('//button[contains(@class, "wpO6b")]/span').text
+        comentarios = driver.find_element.by_xpanth('//button[contains(@class, "wpO6b")]/span').text
+        visualizacoes = driver.find_element_by_xpath('//span[contains(@class, "vcOH2")]/span').text
+        
+        return curtidas, comentarios, visualizacoes
+    except:
+        print(f'Erro ao extrair dados')
 
+        return None, None, None
+    
