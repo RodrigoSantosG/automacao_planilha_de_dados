@@ -30,8 +30,26 @@ def extrair_dados(driver):
         visualizacoes = driver.find_element_by_xpath('//span[contains(@class, "vcOH2")]/span').text
         
         return curtidas, comentarios, visualizacoes
-    except:
-        print(f'Erro ao extrair dados')
+    except Exception as e:
+        print(f'Erro ao extrair dados: {e}')
 
         return None, None, None
+
+# atualizando a planilha 
+def atualizar_planilha(curtidas, comentarios, visualizacoes):
+    try:
+        # Local onde você deseja colocar os dados na planilha ( A1, B1, C1)
+        cell_curtidas = worksheet.find("Curtidas")
+        cell_comentarios = worksheet.find("Comentários")
+        cell_visualizacoes = worksheet.find("Visualizações")
+        
+        worksheet.update_cell(cell_curtidas.row, cell_curtidas.col + 1, curtidas)
+        worksheet.update_cell(cell_comentarios.row, cell_comentarios.col + 1, comentarios)
+        worksheet.update_cell(cell_visualizacoes.row, cell_visualizacoes.col + 1, visualizacoes)
+        
+        print("Dados atualizados na planilha.")
+    except Exception as e:
+        print(f"Erro ao atualizar planilha: {e}")
+
+    
     
