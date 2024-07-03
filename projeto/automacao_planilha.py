@@ -42,7 +42,7 @@ def extrair_dados(driver):
         return None, None, None, None
 
 # atualizando a planilha 
-def atualizar_planilha(link, curtidas, comentarios, visualizacoes):
+def atualizar_planilha(link, likes, comentarios, visualizacoes):
     try:
         # Local onde você deseja colocar os dados na planilha ( A1, B1, C1)
         cell_link = worksheet.find("Link")
@@ -51,7 +51,7 @@ def atualizar_planilha(link, curtidas, comentarios, visualizacoes):
         cell_visualizacoes = worksheet.find("Visualizações")
         
         worksheet.unhide_coll(cell_link.row, cell_link.col + 1, link)
-        worksheet.update_cell(cell_likes.row, cell_likes.col + 1, curtidas)
+        worksheet.update_cell(cell_likes.row, cell_likes.col + 1, likes)
         worksheet.update_cell(cell_comentarios.row, cell_comentarios.col + 1, comentarios)
         worksheet.update_cell(cell_visualizacoes.row, cell_visualizacoes.col + 1, visualizacoes)
         
