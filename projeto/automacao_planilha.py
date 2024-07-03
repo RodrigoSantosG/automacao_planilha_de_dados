@@ -26,27 +26,27 @@ def extrair_dados(driver):
         driver.find_element_by_xpath('//div[@class="v1Nh3 kIKUG  _bz0w"]').click()
         time.sleep(5) # esperar carregar a pagina
         link = driver.find_element_by_xpath('//button[contains(@class, "wpO6b")]/span').text
-        curtidas = driver.find_element_by_xpath('//button[contains(@class, "wpO6b")]/span').text
+        likes = driver.find_element_by_xpath('//button[contains(@class, "wpO6b")]/span').text
         comentarios = driver.find_element_by_xpath('//button[contains(@class, "wpO6b")]/span').text
         visualizacoes = driver.find_element_by_xpath('//span[contains(@class, "vcOH2")]/span').text
         
-        return link, curtidas, comentarios, visualizacoes
+        return link, likes, comentarios, visualizacoes
     except Exception as e:
         print(f'Erro ao extrair dados: {e}')
 
         return None, None, None, None
 
 # atualizando a planilha 
-def atualizar_planilha(link, curtidas, comentarios, visualizacoes):
+def atualizar_planilha(link, likes, comentarios, visualizacoes):
     try:
         # Local onde você deseja colocar os dados na planilha ( A1, B1, C1)
         cell_link = worksheet.find("Link")
-        cell_curtidas = worksheet.find("Curtidas")
+        cell_likes = worksheet.find("Curtidas")
         cell_comentarios = worksheet.find("Comentários")
         cell_visualizacoes = worksheet.find("Visualizações")
         
         worksheet.unhide_coll(cell_link.row, cell_link.col + 1, link)
-        worksheet.update_cell(cell_curtidas.row, cell_curtidas.col + 1, curtidas)
+        worksheet.update_cell(cell_likes.row, cell_likes.col + 1, likes)
         worksheet.update_cell(cell_comentarios.row, cell_comentarios.col + 1, comentarios)
         worksheet.update_cell(cell_visualizacoes.row, cell_visualizacoes.col + 1, visualizacoes)
         
