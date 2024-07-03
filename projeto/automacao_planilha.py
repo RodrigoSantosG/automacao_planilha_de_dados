@@ -64,9 +64,9 @@ def main():
     driver = instagram()
     while True:
         try:
-            link, curtidas, comentarios, visualizacoes = extrair_dados(driver)
-            if link and curtidas and comentarios and visualizacoes:
-                atualizar_planilha(link, curtidas, comentarios, visualizacoes)
+            link, likes, comentarios, visualizacoes = extrair_dados(driver)
+            if link and likes and comentarios and visualizacoes:
+                atualizar_planilha(link, likes, comentarios, visualizacoes)
                 time.sleep(2)
         except Exception as e:
             print(f'Erro ao processar: {e}')
